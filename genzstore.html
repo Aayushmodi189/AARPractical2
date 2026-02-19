@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GENZSTORE | Street Fashion</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f2f2f2;
+}
+
+/* NAVBAR */
+.navbar{
+    background:#111;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.nav-links{
+    display:flex;
+    gap:20px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.menu-icon{
+    display:none;
+    font-size:26px;
+    cursor:pointer;
+}
+
+/* HERO */
+.hero{
+    height:90vh;
+    background:url("https://images.unsplash.com/photo-1520975916090-3105956dac38") center/cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:50px;
+    background:rgba(0,0,0,0.6);
+    padding:20px;
+    border-radius:10px;
+}
+
+/* SECTION */
+.section{
+    padding:50px 20px;
+}
+
+.section h2{
+    text-align:center;
+    margin-bottom:30px;
+    font-size:32px;
+}
+
+/* PRODUCTS */
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+.card img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+}
+
+.card .info{
+    padding:15px;
+    text-align:center;
+}
+
+.card button{
+    margin-top:10px;
+    padding:8px 20px;
+    border:none;
+    background:#ff3cac;
+    color:white;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .nav-links{
+        display:none;
+        flex-direction:column;
+        background:#111;
+        position:absolute;
+        top:60px;
+        right:0;
+        width:100%;
+        padding:20px;
+    }
+
+    .menu-icon{
+        display:block;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">GENZSTORE</div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="menu">
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">New Drops</a>
+        <a href="#">Cart</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>OWN YOUR VIBE 🔥</h1>
+</div>
+
+<!-- PRODUCTS SECTION -->
+<div class="section">
+<h2>🔥 Trending Streetwear</h2>
+
+<div class="products">
+
+<!-- PRODUCT 1 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1520975682031-a3f7f6bfa9c3">
+<div class="info">
+<h3>Oversized Tee</h3>
+<p>₹999</p>
+<button>Add to Cart</button>
+</div>
+</div>
+
+<!-- PRODUCT 2 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1521334884684-d80222895322">
+<div class="info">
+<h3>Hoodie</h3>
+<p>₹1799</p>
+<button>Add to Cart</button>
+</div>
+</div>
+
+<!-- PRODUCT 3 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c">
+<div class="info">
+<h3>Cargo Pants</h3>
+<p>₹1499</p>
+<button>Add to Cart</button>
+</div>
+</div>
+
+<!-- PRODUCT 4 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1520975434755-6f6f2a6fdd8d">
+<div class="info">
+<h3>Crop Top</h3>
+<p>₹799</p>
+<button>Add to Cart</button>
+</div>
+</div>
+
+<!-- PRODUCT 5 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1542060748-10c28b62716e">
+<div class="info">
+<h3>Denim Jacket</h3>
+<p>₹2199</p>
+<button>Add to Cart</button>
+</div>
+</div>
+
+<!-- PRODUCT 6 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1520975928316-3bbd06b88cbe">
+<div class="info">
+<h3>Baggy Jeans</h3>
+<p>₹1899</p>
+<button>Add to Cart</button>
+</div>
+</div>
+
+<!-- PRODUCT 7 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb">
+<div class="info">
+<h3>Street Sneakers</h3>
+<p>₹2499</p>
+<button>Add to Cart</button>
+</div>
+</div>
+
+<!-- PRODUCT 8 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1520974735194-8aabf1c6b43c">
+<div class="info">
+<h3>Cap</h3>
+<p>₹499</p>
+<button>Add to Cart</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+© 2026 GENZSTORE | Built for Gen-Z 💜
+</footer>
+
+<script>
+function toggleMenu(){
+    var menu = document.getElementById("menu");
+    if(menu.style.display === "flex"){
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "flex";
+    }
+}
+</script>
+
+</body>
+</html>
