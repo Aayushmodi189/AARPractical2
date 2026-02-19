@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShoeStore - E-Commerce</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+}
+
+header {
+    background: #111;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.cart {
+    cursor: pointer;
+}
+
+.container {
+    padding: 20px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product h3 {
+    margin: 10px 0;
+}
+
+.price {
+    color: green;
+    font-weight: bold;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    background: #111;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #444;
+}
+
+.cart-container {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 350px;
+    height: 100%;
+    background: white;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+    padding: 20px;
+    overflow-y: auto;
+    display: none;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.total {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.close-cart {
+    float: right;
+    cursor: pointer;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>👟 ShoeStore</h1>
+    <div class="cart" onclick="toggleCart()">
+        🛒 Cart (<span id="cart-count">0</span>)
+    </div>
+</header>
+
+<div class="container">
+    <div class="products">
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" alt="Nike Shoe">
+            <h3>Nike Air Max</h3>
+            <p class="price">$120</p>
+            <button onclick="addToCart('Nike Air Max',120)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1528701800489-20be3c41c87e" alt="Adidas Shoe">
+            <h3>Adidas Runner</h3>
+            <p class="price">$95</p>
+            <button onclick="addToCart('Adidas Runner',95)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db" alt="Puma Shoe">
+            <h3>Puma Sport</h3>
+            <p class="price">$85</p>
+            <button onclick="addToCart('Puma Sport',85)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1519744346364-4e4c9d8f3f2e" alt="Reebok Shoe">
+            <h3>Reebok Classic</h3>
+            <p class="price">$75</p>
+            <button onclick="addToCart('Reebok Classic',75)">Add to Cart</button>
+        </div>
+
+    </div>
+</div>
+
+<div class="cart-container" id="cart">
+    <span class="close-cart" onclick="toggleCart()">X</span>
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <p class="total">Total: $<span id="cart-total">0</span></p>
+    <button onclick="checkout()">Checkout</button>
+</div>
+
+<script>
+let cart = [];
+let total = 0;
+
+function addToCart(name, price) {
+    cart.push({name, price});
+    total += price;
+    updateCart();
+}
+
+function updateCart() {
+    document.getElementById("cart-count").innerText = cart.length;
+
+    let cartItems = document.getElementById("cart-items");
+    cartItems.innerHTML = "";
+
+    cart.forEach((item, index) => {
+        cartItems.innerHTML += `
+            <div class="cart-item">
+                ${item.name} - $${item.price}
+                <button onclick="removeItem(${index})">X</button>
+            </div>
+        `;
+    });
+
+    document.getElementById("cart-total").innerText = total;
+}
+
+function removeItem(index) {
+    total -= cart[index].price;
+    cart.splice(index, 1);
+    updateCart();
+}
+
+function toggleCart() {
+    let cartBox = document.getElementById("cart");
+    cartBox.style.display = cartBox.style.display === "block" ? "none" : "block";
+}
+
+function checkout() {
+    if(cart.length === 0){
+        alert("Your cart is empty!");
+    } else {
+        alert("Order placed successfully!");
+        cart = [];
+        total = 0;
+        updateCart();
+        toggleCart();
+    }
+}
+</script>
+
+</body>
+</html>
